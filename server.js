@@ -6,7 +6,6 @@ import "./server/models/contact.model.js";
 import "./server/models/project.model.js";
 import "./server/models/qualification.model.js";
 
-
 mongoose.Promise = global.Promise;
 mongoose
   .connect(config.mongoUri, {
