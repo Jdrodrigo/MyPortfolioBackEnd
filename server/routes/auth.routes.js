@@ -3,6 +3,7 @@ import { signin, signout, requireSignin } from "../controllers/auth.controller.j
 
 const router = express.Router();
 
+
 // POST /api/auth/signin
 router.post("/signin", signin);
 
