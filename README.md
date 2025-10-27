@@ -14,7 +14,6 @@ Database: MongoDB Atlas (Cloud) using Mongoose ODM
 Authentication: JSON Web Token (JWT) + bcrypt/crypto
 
 Frontend: React (Vite) (Client folder from Assignment 1)
-
 Testing Tool: Thunder Client / Postman
 
 Project Structure
