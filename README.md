@@ -14,30 +14,8 @@ Database: MongoDB Atlas (Cloud) using Mongoose ODM
 Authentication: JSON Web Token (JWT) + bcrypt/crypto
 
 Frontend: React (Vite) (Client folder from Assignment 1)
-Testing Tool: Thunder Client / Postman
 
-Project Structure
-MyPortfolio/
-├── server.js                 # Main server entry point
-├── config/
-│   └── config.js             # MongoDB & JWT configuration
-├── server/
-│   ├── express.js            # Express app setup and middleware
-│   ├── controllers/
-│   │   ├── auth.controller.js
-│   │   └── (other controllers)
-│   ├── models/
-│   │   ├── user.model.js
-│   │   ├── contact.model.js
-│   │   ├── project.model.js
-│   │   └── qualification.model.js
-│   └── routes/
-│       ├── auth.routes.js
-│       ├── contact.routes.js
-│       ├── project.routes.js
-│       ├── qualification.routes.js
-│       └── user.routes.js
-└── client/                   # Frontend React app (Assignment 1)
+Testing Tool: Thunder Client / Postman
 
 Installation & Setup
 1️. Clone the repository
