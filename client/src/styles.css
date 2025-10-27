@@ -1,0 +1,773 @@
+body {font-family: sans-serif; margin:0; background:#000000; color:#fff;}
+.navbar {display:flex;justify-content:space-between;align-items:center;padding:1rem;background:#111;}
+.navbar a {color:#fff;margin:0 0.5rem;text-decoration:none;}
+.navbar a.active {border-bottom:2px solid #58b3dd;}
+section {padding:2rem;}
+
+/* ============================= */
+/* Fullscreen Hero Section        */
+/* ============================= */
+.home-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;   /* fill the screen */
+  text-align: center;
+  background: var(--background);
+}
+
+.home-intro {
+  max-width: 900px;
+  padding: 2rem;
+}
+
+.home-intro h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.home-intro .highlight {
+  color: var(--accent); /* highlights your name */
+}
+
+.home-intro p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+/* ============================= */
+/* Navbar                        */
+/* ============================= */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* space out links & button */
+  align-items: center;
+  background: var(--accent, #1d4ed8);  /* team blue background */
+  padding: 1rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo styling */
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+/* Left side links */
+.nav-links {
+  display: flex;
+  gap: 2rem; /* more spacing between items */
+}
+
+.nav-item {
+  color: #fff; /* white text on blue background */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Smooth hover underline effect */
+.nav-item::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%;
+}
+
+/* Right side resume button */
+.resume-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem; 
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: #fff;
+  color: var(--accent, #1d4ed8);
+}
+
+/* Full-width blue bar */
+.navbar {
+  background: #2563eb;
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: space-between; /* ✅ logo left, nav right */
+  align-items: center;
+}
+
+/* Logo pinned left */
+.logo-wrap {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 80px;
+  width: auto;
+}
+
+/* Nav pinned right */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffdd57; /* hover accent */
+}
+
+/* ============================= */
+/* Skills Section                 */
+/* ============================= */
+.skills-section {
+  margin-top: 3rem;
+  text-align: left; /* align heading to the left */
+}
+
+.skills-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Grid layout: 4 per row, 2 rows */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  justify-items: start; /* align to left */
+}
+
+/* Dark skill cards */
+.skill-card {
+  background: #111;  /* dark card background */
+  border-radius: 0.75rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 160px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* Icons inside cards */
+.skill-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+/* Labels */
+.skill-card p {
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ============================= */
+/* Home Page Animation            */
+/* ============================= */
+.fade-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Domino effect delays */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1s; }
+.delay-6 { animation-delay: 1.2s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================= */
+/* Home project cards animation   */
+/* ============================= */
+/* Featured Projects */
+.featured-projects {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.featured-projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+/* Grid of project cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.project-card {
+  background: #111;
+  border-radius: 1rem;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-body {
+  padding: 1.5rem;
+}
+
+.project-body h3 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.project-body p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn-outline {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: #111;
+}
+
+.view-more {
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  border-radius: 30px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+}
+
+/* ============================= */
+/* About Page Section            */
+/* ============================= */
+
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;       /* vertically centered */
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #000;       /* match site background */
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.about-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Paragraphs */
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  color: #ddd;
+}
+
+/* Resume Button Wrapper */
+.resume-btn {
+  margin-top: 2rem;
+  text-align: center;
+
+  /* ✅ remove any background/border */
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Resume Button */
+.resume-btn a {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  border-radius: 30px;
+  background: #2563eb;   /* blue button */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;          /* ✅ ensure no border */
+  transition: background 0.3s ease;
+}
+
+.resume-btn a:hover {
+  background: #1e40af;   /* darker blue on hover */
+}
+
+/* About Section Layout */
+.about-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: #000;
+}
+
+/* Container for photo + text */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Left-side photo (square, no black bars) */
+.about-photo img {
+  width: 380px;
+  height: 380px;
+  object-fit: cover;   /* ✅ fills square with no black sides */
+  border-radius: 0;    /* keeps it square */
+  border: 4px solid #2563eb;
+}
+
+/* Right-side text */
+.about-content {
+  flex: 1;
+  text-align: left;
+}
+
+.about-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  color: #ddd;
+}
+
+/* Resume button */
+.resume-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background: #2563eb;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ============================= */
+/* Projects Page Section          */
+/* ============================= */
+
+.projects-section {
+  padding: 3rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.projects-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.projects-section > p {
+  color: #ccc;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* Project Card */
+.project-card {
+  margin-bottom: 4rem;
+}
+
+.project-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  padding-left: 20px;
+}
+
+.project-card p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #ddd;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Multiple Images (Gallery) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Vertical gallery for projects */
+.gallery-vertical {
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  gap: 20px;                /* space between images */
+  align-items: center;      /* center images horizontally */
+  margin: 20px 0;
+}
+
+.gallery-vertical img {
+  width: 100%;              /* take full width of container */
+  max-width: 900px;         /* keep them from being too big */
+  height: auto;             /* keep full aspect ratio (no cropping) */
+  border-radius: 8px;
+  object-fit: contain;      /* make sure the whole image fits */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   Education Timeline Layout
+   ========================= */
+.education-timeline {
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.education-timeline h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.education-intro {
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* The timeline container */
+.timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Center vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: #3a3a3a;
+}
+
+/* Each item (half width, with padding so it doesn't touch the line) */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 2rem;         /* internal padding */
+  margin: 2.5rem 0;        /* vertical spacing between items */
+}
+
+/* Left and right columns */
+.timeline-item.left  { left: 0; }
+.timeline-item.right { left: 50%; }
+
+/* The card itself */
+.timeline-content {
+  background: #0f0f0f;
+  border: 1px solid #2a2a2a;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* Offset cards away from the center line so they don't overlap it */
+.timeline-item.left  .timeline-content { margin-right: 2.5rem; }
+.timeline-item.right .timeline-content { margin-left:  2.5rem; }
+
+/* The dots on the line */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  width: 14px;
+  height: 14px;
+  background: #6ab7ff;
+  border: 3px solid #000;
+  border-radius: 50%;
+  z-index: 2;
+  right: -7px;            /* sits on the center line for LEFT items */
+}
+.timeline-item.right::after {
+  left: -7px;             /* mirror for RIGHT items */
+  right: auto;
+}
+
+/* ============================= */
+/* Services Section */
+/* ============================= */
+.services-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: #000;
+  text-align: center;
+}
+
+.services-content {
+  max-width: 1100px;
+  width: 100%;
+}
+
+.services-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.services-content p {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #ccc;
+}
+
+/* Service grid */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;  /* ✅ centers cards in each column */
+}
+
+/* Service cards */
+.service-card {
+  background: #111;
+  border: 1px solid #222;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 280px;       /* ✅ keeps all cards the same size */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.service-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #6ab7ff;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+/* ============================= */
+/* Contact Section               */
+/* ============================= */
+.contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;   /* full screen height */
+  text-align: center;
+  background: #000;    /* black background */
+  color: #fff;
+}
+
+.contact-content {
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.contact-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-content p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.contact-form label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem;
+  border: none;
+  border-bottom: 1px solid #666;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #888;
+}
+
+/* Textarea size */
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Button */
+.btn-primary {
+  margin-top: 1rem;
+  background: #2d55ff;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #1e3cd1;
+}
+
