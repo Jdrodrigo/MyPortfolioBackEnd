@@ -9,5 +9,4 @@ router.post("/signin", signin);
 // GET /api/auth/signout
 router.get("/signout", signout);
 
-
 export default router;
