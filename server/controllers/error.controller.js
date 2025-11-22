@@ -1,10 +1,8 @@
-function handleError(req, res) {
-  //handle the error
-}
-function getErrorMessage(errMsg) {
-  console.log(errMsg);
-} // Export the controller function
-export default {
-  handleError: handleError,
-  getErrorMessage: getErrorMessage,
+import dbErrorHandler from "../helpers/dbErrorHandler.js";
+
+// simple wrapper so existing imports keep working
+const getErrorMessage = (err) => {
+  return dbErrorHandler.getErrorMessage(err);
 };
+
+export default { getErrorMessage };

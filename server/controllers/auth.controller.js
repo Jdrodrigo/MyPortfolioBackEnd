@@ -3,36 +3,74 @@ import { expressjwt } from "express-jwt";
 import User from "../models/user.model.js";
 import config from "../../config/config.js";
 
-// --- SIGN IN ---
+// POST /api/auth/signin
 export const signin = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(401).json({ error: "User not found" });
+    const { email, password } = req.body;
 
-    if (!user.authenticate(req.body.password))
+    let user = await User.findOne({ email });
+    if (!user)
+      return res.status(401).json({ error: "User not found" });
+
+    if (!user.authenticate(password))
       return res.status(401).json({ error: "Email and password don't match." });
 
-    const token = jwt.sign({ _id: user._id }, config.jwtSecret, { expiresIn: "2h" });
+    // include role in token for role-based access
+    const token = jwt.sign(
+      { _id: user._id.toString(), role: user.role },
+      config.jwtSecret,
+      { expiresIn: "2h" }
+    );
 
-    res.cookie("t", token, { expire: new Date() + 9999 });
+    // set cookie (you can also store token on frontend)
+    res.cookie("t", token, {
+      expire: new Date() + 9999,
+      httpOnly: true,
+    });
+
     return res.json({
       token,
-      user: { _id: user._id, name: user.name, email: user.email },
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
     });
   } catch (err) {
-    return res.status(401).json({ error: "Could not sign in" });
+    console.error("Signin error:", err);
+    return res.status(500).json({ error: "Could not sign in" });
   }
 };
 
-// --- SIGN OUT ---
+// GET /api/auth/signout
 export const signout = (req, res) => {
   res.clearCookie("t");
   return res.status(200).json({ message: "Signed out successfully" });
 };
 
-// --- PROTECTED ROUTE ---
+// Middleware: user must be signed in
 export const requireSignin = expressjwt({
   secret: config.jwtSecret,
   algorithms: ["HS256"],
-  requestProperty: "auth"
+  requestProperty: "auth", // decoded token will be in req.auth
 });
+
+// Middleware: user matches the profile being accessed
+export const hasAuthorization = (req, res, next) => {
+  const authorized =
+    req.profile && req.auth && req.profile._id.toString() === req.auth._id;
+  if (!authorized) {
+    return res.status(403).json({ error: "User is not authorized" });
+  }
+  next();
+};
+
+// Middleware: admin-only resources
+export const requireAdmin = (req, res, next) => {
+  if (!req.auth || req.auth.role !== "admin") {
+    return res.status(403).json({ error: "Admin access only" });
+  }
+  next();
+};
+

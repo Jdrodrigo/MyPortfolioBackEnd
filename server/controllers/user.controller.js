@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import extend from "lodash/extend.js";
 import errorHandler from "./error.controller.js";
+
 const create = async (req, res) => {
   const user = new User(req.body);
   try {
@@ -14,9 +15,28 @@ const create = async (req, res) => {
     });
   }
 };
+
+const userByID = async (req, res, next, id) => {
+  try {
+    let user = await User.findById(id);
+    if (!user)
+      return res.status(400).json({ error: "User not found" });
+    req.profile = user;
+    next();
+  } catch (err) {
+    return res.status(400).json({ error: "Could not retrieve user" });
+  }
+};
+
+const read = (req, res) => {
+  req.profile.hashed_password = undefined;
+  req.profile.salt = undefined;
+  return res.json(req.profile);
+};
+
 const list = async (req, res) => {
   try {
-    let users = await User.find().select("name email updated created");
+    const users = await User.find().select("name email role created updated");
     res.json(users);
   } catch (err) {
     return res.status(400).json({
@@ -24,26 +44,7 @@ const list = async (req, res) => {
     });
   }
 };
-const userByID = async (req, res, next, id) => {
-  try {
-    let user = await User.findById(id);
-    if (!user)
-      return res.status(400).json({
-        error: "User not found",
-      });
-    req.profile = user;
-    next();
-  } catch (err) {
-    return res.status(400).json({
-      error: "Could not retrieve user",
-    });
-  }
-};
-const read = (req, res) => {
-  req.profile.hashed_password = undefined;
-  req.profile.salt = undefined;
-  return res.json(req.profile);
-};
+
 const update = async (req, res) => {
   try {
     let user = req.profile;
@@ -59,6 +60,7 @@ const update = async (req, res) => {
     });
   }
 };
+
 const remove = async (req, res) => {
   try {
     let user = req.profile;
@@ -72,4 +74,6 @@ const remove = async (req, res) => {
     });
   }
 };
+
 export default { create, userByID, read, list, remove, update };
+
