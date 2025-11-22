@@ -1,4 +1,23 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 export default function Education() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    // Fetch education items from backend
+    const loadData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/qualifications");
+        setItems(res.data);
+      } catch (err) {
+        console.log("Failed to load education from backend");
+      }
+    };
+
+    loadData();
+  }, []);
+
   return (
     <section className="education-section">
       <div className="education-intro fade-item delay-1">
@@ -9,6 +28,11 @@ export default function Education() {
       </div>
 
       <div className="timeline">
+
+        {/* ============================= */}
+        {/* STATIC TIMELINE — ALWAYS SHOW */}
+        {/* ============================= */}
+
         {/* Timeline Item 1 */}
         <div className="timeline-item left fade-item delay-2">
           <div className="timeline-content">
@@ -38,7 +62,32 @@ export default function Education() {
             </p>
           </div>
         </div>
+
+        {/* ==================================== */}
+        {/* DYNAMIC TIMELINE FROM MONGODB (NEW) */}
+        {/* ==================================== */}
+        {items.length > 0 &&
+          items.map((item, index) => (
+            <div
+              key={item._id}
+              className={`timeline-item ${index % 2 === 0 ? "left" : "right"} fade-item`}
+            >
+              <div className="timeline-content">
+                <h3>{item.completion}</h3>
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
+
+                {/* Optional: Show name/email */}
+                <p style={{ marginTop: "0.5rem", color: "#ccc" }}>
+                  <strong>{item.firstname} {item.lastname}</strong><br />
+                  {item.email}
+                </p>
+              </div>
+            </div>
+          ))}
+
       </div>
     </section>
   );
 }
+
