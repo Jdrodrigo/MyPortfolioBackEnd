@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +25,7 @@ export default function Contact() {
 
     try {
       // Send the form data to your backend API
-      await axios.post("http://localhost:3000/api/contacts", form);
+      await axios.post("https://baldovinoporfolio.onrender.com/api/contacts", form);
 
       alert("Message successfully sent!");
 

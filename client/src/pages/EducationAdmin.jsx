@@ -31,7 +31,7 @@ const EducationAdmin = () => {
   // GET all qualifications
   const fetchEducation = async () => {
     const res = await axios.get(
-      "http://localhost:3000/api/qualifications",
+      "https://baldovinoporfolio.onrender.com/api/qualifications",
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -51,7 +51,7 @@ const EducationAdmin = () => {
     e.preventDefault();
 
     await axios.post(
-      "http://localhost:3000/api/qualifications",
+      "https://baldovinoporfolio.onrender.com/api/qualifications",
       form,
       {
         headers: {
@@ -77,7 +77,7 @@ const EducationAdmin = () => {
   // DELETE qualification
   const deleteEducation = async (id) => {
     await axios.delete(
-      `http://localhost:3000/api/qualifications/${id}`,
+      `https://baldovinoporfolio.onrender.com/api/qualifications/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`

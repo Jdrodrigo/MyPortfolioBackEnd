@@ -73,4 +73,17 @@ export const requireAdmin = (req, res, next) => {
   }
   next();
 };
+// POST /api/auth/signup
+export const signup = async (req, res) => {
+  try {
+    const user = new User(req.body);
+    await user.save();
+
+    return res.json({ message: "Signup success!" });
+  } catch (err) {
+    console.log("Signup error:", err);
+    return res.status(400).json({ error: "Signup failed" });
+  }
+};
+
 

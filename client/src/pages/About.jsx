@@ -16,8 +16,7 @@ export default function About() {
             hands-on experience with programming languages such as Java, Python, C#, and SQL, 
             as well as front-end technologies like React, HTML, CSS, and JavaScript.
           </p>
-          <p className="fade-item delay-3
-          ">
+          <p className="fade-item delay-3">
             I enjoy building practical, user-friendly applications and exploring how AI design 
             patterns can be applied to solve real-world problems. Beyond coding, I’m motivated 
             by continuous learning and a passion for technology that drives me to stay updated 

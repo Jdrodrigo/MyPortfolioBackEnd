@@ -23,7 +23,7 @@ const Signup = () => {
 
     try {
       // POST request to backend (/api/users creates a new user)
-      await axios.post("http://localhost:3000/api/users", form);
+      await axios.post("https://baldovinoporfolio.onrender.com/api/users", form);
 
       alert("Signup successful! You can now sign in.");
       navigate("/signin"); // navigate to login page

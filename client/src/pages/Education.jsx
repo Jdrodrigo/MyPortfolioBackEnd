@@ -8,7 +8,7 @@ export default function Education() {
     // Fetch education items from backend
     const loadData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/qualifications");
+        const res = await axios.get("https://baldovinoporfolio.onrender.com/api/qualifications");
         setItems(res.data);
       } catch (err) {
         console.log("Failed to load education from backend");

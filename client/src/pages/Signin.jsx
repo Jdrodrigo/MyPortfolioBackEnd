@@ -26,7 +26,7 @@ const Signin = () => {
 
     try {
       // POST request to backend
-      const res = await axios.post("http://localhost:3000/api/auth/signin", form);
+      const res = await axios.post("https://baldovinoporfolio.onrender.com/api/auth/signin", form);
 
       // Save user + token in context AND localStorage
       signin(res.data);
