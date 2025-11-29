@@ -18,12 +18,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(compress());
+
+// ✅ FIXED CORS FOR LIVE DEPLOYMENT
 app.use(
   cors({
-    origin: "http://localhost:5173", // Vite dev origin
+    origin: [
+      "http://localhost:5173",              // local dev
+      "https://baldovino.netlify.app"       // your Netlify frontend
+    ],
     credentials: true,
   })
 );
+
 app.use(helmet());
 
 // Routes
@@ -45,4 +51,3 @@ app.use((err, req, res, next) => {
 });
 
 export default app;
-
