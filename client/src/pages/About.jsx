@@ -22,6 +22,7 @@ export default function About() {
             by continuous learning and a passion for technology that drives me to stay updated 
             with the latest trends in software engineering and intelligent systems.
           </p>
+          <p>This paragraph was added to demonstrate CI/CD updates for Assignment 4.</p>
 
           {/* Resume Button */}
           <div className="fade-item delay-4">
